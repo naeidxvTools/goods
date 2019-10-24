@@ -4,20 +4,25 @@
 <head>
     <title>注册页面</title>
     <link rel="stylesheet" href="<c:url value='/jsps/css/user/regist.css'/>" type="text/css">
+    <script type="text/javascript" src="<c:url value='/jquery/jquery-3.4.0.js'/> "></script>
+    <script type="text/javascript" src="<c:url value='/jsps/js/user/regist.js'/> "></script>
+    <script type="text/javascript" src="<c:url value='/js/common.js'/> "></script>
 </head>
 <body>
-    <div id="divMain">
+<div id="divMain">
 
-        <div id="divTitle">
-            <span id="spanTitle">新用户注册</span>
-        </div>
+    <div id="divTitle">
+        <span id="spanTitle">新用户注册</span>
+    </div>
 
-        <div id="divBody">
+    <div id="divBody">
+        <form action="<c:url value='/UserServlet'/> " method="post" id="formRegist">
+            <input type="hidden" name="method" value="regist">
             <table id="tableForm">
                 <tr>
                     <td class="tdText">用户名：</td>
                     <td class="tdInput"><input class="inputClass" type="text" name="loginname" id="loginname"></td>
-                    <td class="tdError"><label class="errorClass" id="loginnameError">用户名不能为空！</label></td>
+                    <td class="tdError"><label class="errorClass" id="loginnameError"></label></td>
                 </tr>
                 <tr>
                     <td class="tdText">登录密码：</td>
@@ -42,9 +47,10 @@
                 <tr>
                     <td></td>
                     <td>
-                        <div id="divVerifyCode"><img id="imgVerifyCode" src="<c:url value='/VerifyCodeServlet'/> "></div>
+                        <div id="divVerifyCode"><img id="imgVerifyCode" src="<c:url value='/VerifyCodeServlet'/> ">
+                        </div>
                     </td>
-                    <td><label><a href="">换一张</a></label></td>
+                    <td><label><a href="javascript:_change();">换一张</a></label></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -52,8 +58,9 @@
                     <td><label></label></td>
                 </tr>
             </table>
-        </div>
-
+        </form>
     </div>
+
+</div>
 </body>
 </html>
