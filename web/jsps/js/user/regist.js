@@ -93,6 +93,23 @@ function validateLoginname()
         return false;
     }
     //3.是否注册校验
+    $.ajax({
+        url:"/goods/UserServlet",
+        data:{method:"ajaxValidateLoginname",loginname:value},
+        type:"POST",
+        dataType:"json",
+        async:false,
+        cache:false,
+        success:function (res)
+        {
+            if (!res)
+            {
+                $("#" + id + "Error").text("（异步请求）用户名已经注册!");
+                showError($("#" + id + "Error"));
+                return false;
+            }
+        }
+    });
 
     return true;
 }
@@ -163,6 +180,25 @@ function validateEmail()
         showError($("#" + id + "Error"));
         return false;
     }
+
+    //3.是否注册校验
+    $.ajax({
+        url:"/goods/UserServlet",
+        data:{method:"ajaxValidateEmail",email:value},
+        type:"POST",
+        dataType:"json",
+        async:false,
+        cache:false,
+        success:function (res)
+        {
+            if (!res)
+            {
+                $("#" + id + "Error").text("（异步请求）Email已经注册!");
+                showError($("#" + id + "Error"));
+                return false;
+            }
+        }
+    });
     return true;
 }
 
@@ -186,6 +222,25 @@ function validateVerifyCode()
         showError($("#" + id + "Error"));
         return false;
     }
+
+    //3.是否正确校验
+    $.ajax({
+        url:"/goods/UserServlet",
+        data:{method:"ajaxValidateVerifyCode",verifyCode:value},
+        type:"POST",
+        dataType:"json",
+        async:false,
+        cache:false,
+        success:function (res)
+        {
+            if (!res)
+            {
+                $("#" + id + "Error").text("（异步请求）验证码错误!");
+                showError($("#" + id + "Error"));
+                return false;
+            }
+        }
+    });
     return true;
 }
 
