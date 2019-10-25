@@ -35,6 +35,18 @@ $(function ()
     $("#formRegist").submit(function ()
     {
         var bool = true;
+        var id = $(".inputClass").each(function ()
+        {
+            var id = $(this).attr("id");
+            var funName = "validate" + id.substring(0,1).toUpperCase() + id.substring(1) + "()";
+            var b = eval(funName);//执行函数调用
+            if (!b)
+            {
+                bool =  b;
+            }
+        });
+
+        /*var bool = true;
         if (!validateLoginname())
         {
             bool = false;
@@ -55,7 +67,7 @@ $(function ()
         if (!validateEmail())
         {
             bool = false;
-        }
+        }*/
         return bool;
     });
 });
