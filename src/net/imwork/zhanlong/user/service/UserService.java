@@ -5,9 +5,7 @@ import net.imwork.zhanlong.mail.Mail;
 import net.imwork.zhanlong.mail.MailUtils;
 import net.imwork.zhanlong.user.dao.UserDao;
 import net.imwork.zhanlong.user.domain.User;
-import org.apache.commons.dbutils.handlers.ScalarHandler;
 
-import javax.mail.MessagingException;
 import javax.mail.Session;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -23,6 +21,7 @@ public class UserService
 
     /**
      * 校验用户名是否注册
+     *
      * @param loginname
      * @return
      */
@@ -39,6 +38,7 @@ public class UserService
 
     /**
      * 校验Email是否注册
+     *
      * @param email
      * @return
      */
@@ -55,6 +55,7 @@ public class UserService
 
     /**
      * 注册用户
+     *
      * @param user
      */
     public void regist(User user)
@@ -92,13 +93,14 @@ public class UserService
         String from = prop.getProperty("from");
         String to = user.getEmail();
         String subject = prop.getProperty("subject");
-        String content = MessageFormat.format(prop.getProperty("content"),user.getActivationCode());
+        String content = MessageFormat.format(prop.getProperty("content"), user.getActivationCode());
+        System.out.println("content = " + content);
         Mail mail = new Mail(from, to, subject, content);
 
         //发送邮件
         try
         {
-            MailUtils.send(session,mail);
+            MailUtils.send(session, mail);
         } catch (Exception e)
         {
             throw new RuntimeException(e);

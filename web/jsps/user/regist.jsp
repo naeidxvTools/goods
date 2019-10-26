@@ -21,28 +21,28 @@
             <table id="tableForm">
                 <tr>
                     <td class="tdText">用户名：</td>
-                    <td class="tdInput"><input class="inputClass" type="text" name="loginname" id="loginname"></td>
-                    <td class="tdError"><label class="errorClass" id="loginnameError"></label></td>
+                    <td class="tdInput"><input class="inputClass" type="text" name="loginname" id="loginname" value="${user.loginname}"></td>
+                    <td class="tdError"><label class="errorClass" id="loginnameError">${errors.loginname}</label></td>
                 </tr>
                 <tr>
                     <td class="tdText">登录密码：</td>
-                    <td><input class="inputClass" type="password" name="loginpass" id="loginpass"></td>
-                    <td><label class="errorClass" id="loginpassError"></label></td>
+                    <td><input class="inputClass" type="password" name="loginpass" id="loginpass" value="${user.loginpass}"></td>
+                    <td><label class="errorClass" id="loginpassError">${errors.loginpass}</label></td>
                 </tr>
                 <tr>
                     <td class="tdText">确认密码：</td>
-                    <td><input class="inputClass" type="password" name="reloginpass" id="reloginpass"></td>
-                    <td><label class="errorClass" id="reloginpassError"></label></td>
+                    <td><input class="inputClass" type="password" name="reloginpass" id="reloginpass" value="${user.reloginpass}"></td>
+                    <td><label class="errorClass" id="reloginpassError">${errors.reloginpass}</label></td>
                 </tr>
                 <tr>
                     <td class="tdText">Email：</td>
-                    <td><input class="inputClass" type="text" name="email" id="email"></td>
-                    <td><label class="errorClass" id="emailError"></label></td>
+                    <td><input class="inputClass" type="text" name="email" id="email" value="${user.email}"></td>
+                    <td><label class="errorClass" id="emailError">${errors.email}</label></td>
                 </tr>
                 <tr>
                     <td class="tdText">验证码：</td>
-                    <td><input class="inputClass" type="text" name="verifyCode" id="verifyCode"></td>
-                    <td><label class="errorClass" id="verifyCodeError"></label></td>
+                    <td><input class="inputClass" type="text" name="verifyCode" id="verifyCode" value="${user.verifyCode}"></td>
+                    <td><label class="errorClass" id="verifyCodeError">${errors.verifyCode}</label></td>
                 </tr>
                 <tr>
                     <td></td>
