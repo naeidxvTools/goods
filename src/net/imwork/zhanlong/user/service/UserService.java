@@ -121,7 +121,6 @@ public class UserService
         String to = user.getEmail();
         String subject = prop.getProperty("subject");
         String content = MessageFormat.format(prop.getProperty("content"), user.getActivationCode());
-        System.out.println("content = " + content);
         Mail mail = new Mail(from, to, subject, content);
 
         //发送邮件
