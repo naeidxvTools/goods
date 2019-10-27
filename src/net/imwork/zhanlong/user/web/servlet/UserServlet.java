@@ -4,6 +4,7 @@ import net.imwork.zhanlong.commons.CommonUtils;
 import net.imwork.zhanlong.servlet.BaseServlet;
 import net.imwork.zhanlong.user.domain.User;
 import net.imwork.zhanlong.user.service.UserService;
+import net.imwork.zhanlong.user.service.exception.UserException;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -185,11 +186,18 @@ public class UserServlet extends BaseServlet
      */
     public String activation(HttpServletRequest request, HttpServletResponse response)
     {
-
         String activationCode = (String) request.getParameter("activationCode");
-        System.out.println("activation...." + activationCode);
-
-        return null;
+        try
+        {
+            userService.activation(activationCode);
+            request.setAttribute("code","success");
+            request.setAttribute("msg","恭喜激活成功，请马上登录!");
+        } catch (UserException e)
+        {
+            request.setAttribute("code","error");
+            request.setAttribute("msg",e.getMessage());
+        }
+        return "f:/jsps/msg.jsp";
     }
 
 }

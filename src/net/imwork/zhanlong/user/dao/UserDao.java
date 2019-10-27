@@ -3,6 +3,7 @@ package net.imwork.zhanlong.user.dao;
 import net.imwork.zhanlong.jdbc.TxQueryRunner;
 import net.imwork.zhanlong.user.domain.User;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.SQLException;
@@ -13,6 +14,31 @@ import java.sql.SQLException;
 public class UserDao
 {
     QueryRunner queryRunner = new TxQueryRunner();
+
+    /**
+     * 通过激活码查找
+     * @param activationCode
+     * @return
+     * @throws SQLException
+     */
+    public User findByActivationCode(String activationCode) throws SQLException
+    {
+        String sql = "select * from t_user where activationCode=?";
+        User user = queryRunner.query(sql, new BeanHandler<>(User.class), activationCode);
+        return user;
+    }
+
+    /**
+     * 更新状态
+     * @param uid
+     * @param status
+     * @throws SQLException
+     */
+    public void updateStatus(String uid, int status) throws SQLException
+    {
+        String sql = "update t_user set status=? where uid=?";
+        queryRunner.update(sql, status,uid);
+    }
 
     /**
      * 校验用户名是否注册

@@ -5,6 +5,7 @@ import net.imwork.zhanlong.mail.Mail;
 import net.imwork.zhanlong.mail.MailUtils;
 import net.imwork.zhanlong.user.dao.UserDao;
 import net.imwork.zhanlong.user.domain.User;
+import net.imwork.zhanlong.user.service.exception.UserException;
 
 import javax.mail.Session;
 import java.io.IOException;
@@ -18,6 +19,32 @@ import java.util.Properties;
 public class UserService
 {
     private UserDao userDao = new UserDao();
+
+    /**
+     * 激活功能
+     * @param activationCode
+     */
+    public void activation(String activationCode) throws UserException
+    {
+        try
+        {
+            User user = userDao.findByActivationCode(activationCode);
+            if (user == null)
+            {
+                throw new UserException("无效激活码");
+            }
+            if (user.getStatus() == 1)
+            {
+                throw new UserException("您已经激活，不能二次激活");
+            }
+
+            userDao.updateStatus(user.getUid(),1);
+        } catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+
+    }
 
     /**
      * 校验用户名是否注册
