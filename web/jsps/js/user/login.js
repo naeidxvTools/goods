@@ -112,12 +112,12 @@ function validateVerifyCode() {
 			async: false,
 			type: "POST",
 			dataType: "json",
-			data: {method: "validateVerifyCode", verifyCode: value},
+			data: {method: "ajaxValidateVerifyCode", verifyCode: value},
 			url: "/goods/UserServlet",
 			success: function(flag) {
 				if(!flag) {
 					$("#verifyCodeError").css("display", "");
-					$("#verifyCodeError").text("错误的验证码！");
+					$("#verifyCodeError").text("(异步)错误的验证码！");
 					bool = false;					
 				}
 			}
