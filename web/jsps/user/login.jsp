@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="main">
-    <div><img src="<c:url value='/images/zan.png'/>" width="100px"/></div>
+    <div><img src="<c:url value='/images/zan.gif'/>" width="100px"/></div>
     <div>
         <div class="imageDiv"><img class="img" src="<c:url value='/images/zj.png'/>"/></div>
         <div class="login1">
