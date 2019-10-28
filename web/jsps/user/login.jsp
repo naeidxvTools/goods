@@ -10,20 +10,18 @@
 </head>
 <body>
 <div class="main">
-    <div><img src="<c:url value='/images/zan.gif'/>" width="100px"/></div>
     <div>
         <div class="imageDiv"><img class="img" src="<c:url value='/images/zj.png'/>"/></div>
         <div class="login1">
             <div class="login2">
                 <div class="loginTopDiv">
+                    <img id="imgLogo" src="<c:url value='/images/zan.gif'/>" width="100px"/>
                     <span class="loginTop">船舶会员登录</span>
-                    <span>
-                <a href="<c:url value='/jsps/user/regist.jsp'/>" class="registBtn"></a>
-              </span>
+                    <span><a href="<c:url value='/jsps/user/regist.jsp'/>" class="registBtn"></a></span>
                 </div>
                 <div>
                     <form target="_top" action="<c:url value='/index.jsp'/>" method="post" id="loginForm">
-                        <input type="hidden" name="method" value="" />
+                        <input type="hidden" name="method" value=""/>
                         <table>
                             <tr>
                                 <td width="50"></td>
@@ -60,7 +58,8 @@
                             <tr>
                                 <td>&nbsp;</td>
                                 <td align="left">
-                                    <input type="image" id="submit" src="<c:url value='/images/login1.jpg'/>" class="loginBtn"/>
+                                    <input type="image" id="submit" src="<c:url value='/images/login1.jpg'/>"
+                                           class="loginBtn"/>
                                 </td>
                             </tr>
                         </table>
