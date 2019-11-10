@@ -100,7 +100,6 @@ public class UserService
             throw new RuntimeException(e);
         }
         //3.发邮件
-
         Properties prop = new Properties();
         try
         {
