@@ -17,7 +17,8 @@
 	-->
 	<link rel="stylesheet" type="text/css" href="<c:url value='/css/css.css'/>">
 	<link rel="stylesheet" type="text/css" href="<c:url value='/jsps/css/user/pwd.css'/>">
-	<script type="text/javascript" src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/jquery/jquery-3.4.0.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/jsps/js/user/pwd.js'/>"></script>
 	<script src="<c:url value='/js/common.js'/>"></script>
   </head>
   
@@ -52,7 +53,7 @@
 			<tr>
 				<td align="right"></td>
 				<td>
-				  <img id="vCode" src="" border="1"/>
+				  <img id="imgVerifyCode" src="<c:url value='/VerifyCodeServlet'/>" border="1"/>
 		    	  <a href="javascript:_change();">看不清，换一张</a>
 				</td>
 			</tr>

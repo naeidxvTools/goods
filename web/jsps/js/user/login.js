@@ -10,11 +10,10 @@ $(function() {
 			$("#submit").attr("src", "/goods/images/login1.jpg");
 		}
 	);
-	
 	/*
 	 * 2. 给注册按钮添加submit()事件，完成表单校验
 	 */
-	$("#submit").submit(function(){
+	$("#loginForm").submit(function(){
 		$("#msg").text("");
 		var bool = true;
 		$(".input").each(function() {

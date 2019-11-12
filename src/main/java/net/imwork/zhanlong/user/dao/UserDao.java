@@ -16,6 +16,18 @@ public class UserDao
     QueryRunner queryRunner = new TxQueryRunner();
 
     /**
+     * 按用户名和密码查询
+     * @param loginname
+     * @param loginpass
+     * @return
+     */
+    public User findByLoginnameAndLoginpass(String loginname, String loginpass) throws SQLException
+    {
+        String sql = "select * from t_user where loginname=? and loginpass=?";
+        return queryRunner.query(sql, new BeanHandler<>(User.class), loginname, loginpass);
+    }
+
+    /**
      * 通过激活码查找
      * @param activationCode
      * @return

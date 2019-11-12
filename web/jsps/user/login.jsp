@@ -1,5 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+    //禁止浏览器缓存
+    response.addHeader("Pragma", "no-cache");
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.addHeader("Cache-Control", "pre-check=0, post-check=0");
+    response.setDateHeader("Expires", 0);
+%>
 <html>
 <head>
     <title>登录</title>
@@ -7,6 +15,20 @@
     <script type="text/javascript" src="<c:url value='/jquery/jquery-3.4.0.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/jsps/js/user/login.js'/> "></script>
     <script src="<c:url value='/js/common.js'/>"></script>
+
+    <script type="text/javascript">
+        $(function ()
+        {
+            var loginname = window.decodeURI("${cookie.loginname.value}");
+
+            if("${requestScope.user.loginname}")
+            {
+                loginname = "${requestScope.user.loginname}";
+            }
+
+            $("#loginname").val(loginname);
+        });
+    </script>
 </head>
 <body>
 <div class="main">
@@ -20,12 +42,12 @@
                     <span><a href="<c:url value='/jsps/user/regist.jsp'/>" class="registBtn"></a></span>
                 </div>
                 <div>
-                    <form target="_top" action="<c:url value='/index.jsp'/>" method="post" id="loginForm">
-                        <input type="hidden" name="method" value=""/>
+                    <form target="_top" action="<c:url value='/UserServlet'/>" method="post" id="loginForm">
+                        <input type="hidden" name="method" value="login"/>
                         <table>
                             <tr>
                                 <td width="50"></td>
-                                <td><label class="error" id="msg"></label></td>
+                                <td><label class="error" id="msg">${msg}</label></td>
                             </tr>
                             <tr>
                                 <td width="50">用户名</td>
@@ -37,7 +59,7 @@
                             </tr>
                             <tr>
                                 <td>密　码</td>
-                                <td><input class="input" type="password" name="loginpass" id="loginpass"/></td>
+                                <td><input class="input" type="password" name="loginpass" id="loginpass" value="${user.loginpass}"/></td>
                             </tr>
                             <tr>
                                 <td height="20">&nbsp;</td>
@@ -46,7 +68,7 @@
                             <tr>
                                 <td>验证码</td>
                                 <td>
-                                    <input class="input yzm" type="text" name="verifyCode" id="verifyCode" value=""/>
+                                    <input class="input yzm" type="text" name="verifyCode" id="verifyCode" value="${user.verifyCode}"/>
                                     <img id="imgVerifyCode" src="<c:url value='/VerifyCodeServlet'/> "/>
                                     <a id="aVerifyCode">换张图</a>
                                 </td>

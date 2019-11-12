@@ -21,6 +21,22 @@ public class UserService
     private UserDao userDao = new UserDao();
 
     /**
+     * 登录功能
+     * @param user
+     * @return
+     */
+    public User login(User user)
+    {
+        try
+        {
+            return userDao.findByLoginnameAndLoginpass(user.getLoginname(), user.getLoginpass());
+        } catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
      * 激活功能
      * @param activationCode
      */

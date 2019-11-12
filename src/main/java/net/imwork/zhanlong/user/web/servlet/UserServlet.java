@@ -7,9 +7,11 @@ import net.imwork.zhanlong.user.service.UserService;
 import net.imwork.zhanlong.user.service.exception.UserException;
 
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,6 +22,55 @@ import java.util.Map;
 public class UserServlet extends BaseServlet
 {
     private UserService userService = new UserService();
+
+    /**
+     * 登录功能
+     * @param request
+     * @param response
+     * @return
+     * @throws IOException
+     */
+    public String login(HttpServletRequest request, HttpServletResponse response) throws IOException
+    {
+        //1.封装表单数据到User
+        User user = CommonUtils.mapToBean(request.getParameterMap(), User.class);
+
+        //2.校验表单数据
+        Map<String, String> errors = validateLogin(user, request);
+        if (!errors.isEmpty())
+        {
+            request.setAttribute("errors", errors);
+            return "f:/jsps/user/login.jsp";
+        }
+
+        //3.使用service查询得到User
+        User userByFind = userService.login(user);
+
+        //4.查看用户是否存在
+        if (userByFind == null)
+        {
+            request.setAttribute("msg","用户名或密码错误!");
+            request.setAttribute("user", user);
+            return "f:/jsps/user/login.jsp";
+        }else
+        {
+            if (userByFind.getStatus() == 0)
+            {
+                request.setAttribute("msg", "用户还没有激活!");
+                request.setAttribute("user", user);
+                return "f:/jsps/user/login.jsp";
+            } else
+            {
+                request.getSession().setAttribute("sessionUser", userByFind);
+                String loginname = userByFind.getLoginname();
+                loginname = URLEncoder.encode(loginname, "utf-8");
+                Cookie cookie = new Cookie("loginname", loginname);
+                cookie.setMaxAge(60 * 60 * 24 * 10);
+                response.addCookie(cookie);
+                return "r:/index.jsp";
+            }
+        }
+    }
 
     /**
      * 校验用户名是否注册
@@ -40,6 +91,14 @@ public class UserServlet extends BaseServlet
 
         return null;
     }
+
+    private Map<String, String> validateLogin(User user, HttpServletRequest request)
+    {
+        Map<String, String> errors = new HashMap<>();
+
+        return errors;
+    }
+
 
     /**
      * 校验邮箱是否注册
