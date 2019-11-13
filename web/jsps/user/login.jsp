@@ -70,7 +70,7 @@
                                 <td>
                                     <input class="input yzm" type="text" name="verifyCode" id="verifyCode" value="${user.verifyCode}"/>
                                     <img id="imgVerifyCode" src="<c:url value='/VerifyCodeServlet'/> "/>
-                                    <a id="aVerifyCode">换张图</a>
+                                    <a id="aVerifyCode" href="javascript:_change();">换张图</a>
                                 </td>
                             </tr>
                             <tr>

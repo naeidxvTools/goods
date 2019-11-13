@@ -128,7 +128,6 @@ function validateVerifyCode() {
 			data: {method: "ajaxValidateVerifyCode", verifyCode: value},
 			url: "/goods/UserServlet",
 			success: function(flag) {
-				alert("ok");
 				if(!flag) {
 					$("#verifyCodeError").css("display", "");
 					$("#verifyCodeError").text("错误的验证码！");
