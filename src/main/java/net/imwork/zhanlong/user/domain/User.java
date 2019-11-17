@@ -22,13 +22,13 @@ public class User
     private String verifyCode;//验证码
 
     //修改密码表单
-    private String newloginpass;//新密码
+    private String newpass;//新密码
 
     public User()
     {
     }
 
-    public User(String uid, String loginname, String loginpass, String email, int status, String activationCode, String reloginpass, String verifyCode, String newloginpass)
+    public User(String uid, String loginname, String loginpass, String email, int status, String activationCode, String reloginpass, String verifyCode, String newpass)
     {
         this.uid = uid;
         this.loginname = loginname;
@@ -38,7 +38,7 @@ public class User
         this.activationCode = activationCode;
         this.reloginpass = reloginpass;
         this.verifyCode = verifyCode;
-        this.newloginpass = newloginpass;
+        this.newpass = newpass;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class User
                 ", activationCode='" + activationCode + '\'' +
                 ", reloginpass='" + reloginpass + '\'' +
                 ", verifyCode='" + verifyCode + '\'' +
-                ", newloginpass='" + newloginpass + '\'' +
+                ", newpass='" + newpass + '\'' +
                 '}';
     }
 
@@ -137,13 +137,13 @@ public class User
         this.verifyCode = verifyCode;
     }
 
-    public String getNewloginpass()
+    public String getNewpass()
     {
-        return newloginpass;
+        return newpass;
     }
 
-    public void setNewloginpass(String newloginpass)
+    public void setNewpass(String newpass)
     {
-        this.newloginpass = newloginpass;
+        this.newpass = newpass;
     }
 }

@@ -43,11 +43,11 @@ public class UserServlet extends BaseServlet
         }
         String uid = sessionUser.getUid();
 
-        //3.使用uid和表单中的oldPass和newPass来调用service方法
+        //3.使用uid和表单中的loginpass和newpass来调用service方法
         //如果出现异常，保存异常信息到request中，转发到pwd.jsp
         try
         {
-            userService.updatePassword(uid,user.getNewloginpass(),user.getLoginpass());
+            userService.updatePassword(uid,user.getNewpass(),user.getLoginpass());
             //4.保存成功信息到request中
             request.setAttribute("msg","恭喜，您修改密码成功!");
             request.setAttribute("code", "success");
@@ -60,6 +60,19 @@ public class UserServlet extends BaseServlet
             request.setAttribute("user", user);
             return "f:/jsps/user/pwd.jsp";
         }
+    }
+
+    /**
+     * 退出功能
+     * @param request
+     * @param response
+     * @return
+     * @throws IOException
+     */
+    public String quit(HttpServletRequest request, HttpServletResponse response) throws IOException
+    {
+        request.getSession().invalidate();
+        return "r:/jsps/user/login.jsp";
     }
 
     /**
@@ -131,6 +144,35 @@ public class UserServlet extends BaseServlet
         return null;
     }
 
+    /**
+     * 校验原密码是否正确
+     * @param request
+     * @param response
+     * @return
+     * @throws IOException
+     */
+    public String ajaxValidateLoginpass(HttpServletRequest request, HttpServletResponse response) throws IOException
+    {
+        //1.得到原密码
+        String loginpass = request.getParameter("loginpass");
+
+        //2.从session中获得uid
+        User sessionUser = (User) request.getSession().getAttribute("sessionUser");
+        if (sessionUser == null)
+        {
+            request.setAttribute("msg","(修改密码)您还没有登录!");
+            return "f:/jsps/user/login.jsp";
+        }
+        String uid = sessionUser.getUid();
+
+        //2.通过service得到校验结果
+        boolean b = userService.ajaxValidateLoginpass(uid, loginpass);
+
+        //3.发给客户端
+        response.getWriter().print(b);
+
+        return null;
+    }
     private Map<String, String> validateLogin(User user, HttpServletRequest request)
     {
         Map<String, String> errors = new HashMap<>();

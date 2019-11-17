@@ -23,22 +23,22 @@ public class UserService
     /**
      * 修改密码
      * @param uid
-     * @param newloginpass
-     * @param oldPass
+     * @param newpass
+     * @param loginpass
      */
-    public void updatePassword(String uid, String newloginpass, String oldPass) throws UserException
+    public void updatePassword(String uid, String newpass, String loginpass) throws UserException
     {
         try
         {
             //1.校验老密码
-            boolean b = userDao.findByUidAndPassword(uid, oldPass);
+            boolean b = userDao.findByUidAndPassword(uid, loginpass);
             if (!b)
             {
-                throw new UserException("原密码错误!");
+                throw new UserException("（服务器）原密码错误!");
             }
 
             //2.修改密码
-            userDao.updatePassword(uid,newloginpass);
+            userDao.updatePassword(uid,newpass);
 
         } catch (SQLException e)
         {
@@ -104,6 +104,23 @@ public class UserService
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * 校验原密码
+     * @param loginpass
+     * @return
+     */
+    public boolean ajaxValidateLoginpass(String uid, String loginpass)
+    {
+        try
+        {
+            return userDao.findByUidAndPassword(uid, loginpass);
+        } catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     /**
      * 校验Email是否注册
@@ -174,5 +191,6 @@ public class UserService
         }
 
     }
+
 
 }

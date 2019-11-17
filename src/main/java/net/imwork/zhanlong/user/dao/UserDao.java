@@ -31,13 +31,13 @@ public class UserDao
     /**
      * 修改密码
      * @param uid
-     * @param password
+     * @param newloginpass
      * @throws SQLException
      */
-    public void updatePassword(String uid, String password) throws SQLException
+    public void updatePassword(String uid, String newloginpass) throws SQLException
     {
         String sql = "update t_user set loginpass=? where uid=?";
-        queryRunner.update(sql, password, uid);
+        queryRunner.update(sql, newloginpass, uid);
     }
 
     /**

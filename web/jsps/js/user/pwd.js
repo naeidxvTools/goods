@@ -54,12 +54,12 @@ function validateLoginpass() {
 			async: false,
 			type: "POST",
 			dataType: "json",
-			data: {method: "validateLoginpass", loginpass: value},
+			data: {method: "ajaxValidateLoginpass", loginpass: value},
 			url: "/goods/UserServlet",
 			success: function(flag) {
 				if(!flag) {
 					$("#loginpassError").css("display", "");
-					$("#loginpassError").text("原密码错误！");
+					$("#loginpassError").text("(异步)原密码错误！");
 					bool = false;				
 				}
 			}
@@ -130,7 +130,7 @@ function validateVerifyCode() {
 			success: function(flag) {
 				if(!flag) {
 					$("#verifyCodeError").css("display", "");
-					$("#verifyCodeError").text("错误的验证码！");
+					$("#verifyCodeError").text("(异步)错误的验证码！");
 					bool = false;					
 				}
 			}
