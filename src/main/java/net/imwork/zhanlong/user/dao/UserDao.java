@@ -16,6 +16,31 @@ public class UserDao
     QueryRunner queryRunner = new TxQueryRunner();
 
     /**
+     * 按uid和密码查询
+     * @param uid
+     * @param password
+     * @return
+     */
+    public boolean findByUidAndPassword(String uid, String password) throws SQLException
+    {
+        String sql = "select count(*) from t_user where uid=? and loginpass=?";
+        Number number = queryRunner.query(sql, new ScalarHandler<>(), uid, password);
+        return number.intValue() > 0;
+    }
+
+    /**
+     * 修改密码
+     * @param uid
+     * @param password
+     * @throws SQLException
+     */
+    public void updatePassword(String uid, String password) throws SQLException
+    {
+        String sql = "update t_user set loginpass=? where uid=?";
+        queryRunner.update(sql, password, uid);
+    }
+
+    /**
      * 按用户名和密码查询
      * @param loginname
      * @param loginpass

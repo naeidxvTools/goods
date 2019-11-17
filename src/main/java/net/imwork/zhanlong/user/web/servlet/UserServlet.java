@@ -24,6 +24,45 @@ public class UserServlet extends BaseServlet
     private UserService userService = new UserService();
 
     /**
+     * 修改密码
+     * @param request
+     * @param response
+     * @return
+     * @throws IOException
+     */
+    public String updatePassword(HttpServletRequest request, HttpServletResponse response) throws IOException
+    {
+        //1.封装表单数据到User中
+        User user = CommonUtils.mapToBean(request.getParameterMap(), User.class);
+        //2.从session中获得uid
+        User sessionUser = (User) request.getSession().getAttribute("sessionUser");
+        if (sessionUser == null)
+        {
+            request.setAttribute("msg","您还没有登录!");
+            return "f:/jsps/user/login.jsp";
+        }
+        String uid = sessionUser.getUid();
+
+        //3.使用uid和表单中的oldPass和newPass来调用service方法
+        //如果出现异常，保存异常信息到request中，转发到pwd.jsp
+        try
+        {
+            userService.updatePassword(uid,user.getNewloginpass(),user.getLoginpass());
+            //4.保存成功信息到request中
+            request.setAttribute("msg","恭喜，您修改密码成功!");
+            request.setAttribute("code", "success");
+            //5.转发到msg.jsp
+            return "f:/jsps/msg.jsp";
+
+        } catch (UserException e)
+        {
+            request.setAttribute("msg",e.getMessage());
+            request.setAttribute("user", user);
+            return "f:/jsps/user/pwd.jsp";
+        }
+    }
+
+    /**
      * 登录功能
      * @param request
      * @param response
