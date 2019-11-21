@@ -1,11 +1,11 @@
-package net.imwork.zhanlong.user.service;
+package net.imwork.zhanlong.goods.user.service;
 
 import net.imwork.zhanlong.commons.CommonUtils;
 import net.imwork.zhanlong.mail.Mail;
 import net.imwork.zhanlong.mail.MailUtils;
-import net.imwork.zhanlong.user.dao.UserDao;
-import net.imwork.zhanlong.user.domain.User;
-import net.imwork.zhanlong.user.service.exception.UserException;
+import net.imwork.zhanlong.goods.user.dao.UserDao;
+import net.imwork.zhanlong.goods.user.domain.User;
+import net.imwork.zhanlong.goods.user.service.exception.UserException;
 
 import javax.mail.Session;
 import java.io.IOException;

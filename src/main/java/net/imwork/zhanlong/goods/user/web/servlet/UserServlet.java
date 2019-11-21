@@ -1,10 +1,10 @@
-package net.imwork.zhanlong.user.web.servlet;
+package net.imwork.zhanlong.goods.user.web.servlet;
 
 import net.imwork.zhanlong.commons.CommonUtils;
+import net.imwork.zhanlong.goods.user.domain.User;
+import net.imwork.zhanlong.goods.user.service.UserService;
+import net.imwork.zhanlong.goods.user.service.exception.UserException;
 import net.imwork.zhanlong.servlet.BaseServlet;
-import net.imwork.zhanlong.user.domain.User;
-import net.imwork.zhanlong.user.service.UserService;
-import net.imwork.zhanlong.user.service.exception.UserException;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;

@@ -1,4 +1,4 @@
-package net.imwork.zhanlong.user.domain;
+package net.imwork.zhanlong.goods.user.domain;
 
 /**
  * 用户模块的实体类

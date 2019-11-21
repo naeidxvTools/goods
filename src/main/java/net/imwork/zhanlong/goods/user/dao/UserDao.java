@@ -1,7 +1,7 @@
-package net.imwork.zhanlong.user.dao;
+package net.imwork.zhanlong.goods.user.dao;
 
+import net.imwork.zhanlong.goods.user.domain.User;
 import net.imwork.zhanlong.jdbc.TxQueryRunner;
-import net.imwork.zhanlong.user.domain.User;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;

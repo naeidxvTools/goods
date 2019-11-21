@@ -1,4 +1,4 @@
-package net.imwork.zhanlong.user.service.exception;
+package net.imwork.zhanlong.goods.user.service.exception;
 
 public class UserException extends Exception
 {
