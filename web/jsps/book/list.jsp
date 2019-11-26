@@ -35,8 +35,7 @@
                 <span class="price_r">&yen;${book.price}</span>
                 (<span class="price_s">${book.discount}折</span>)
             </p>
-            <p><a id="bname" title="${book.bname}"
-                  href="<c:url value='/jsps/book/desc.jsp'/>">${book.bname}</a></p>
+            <p><a id="bname" title="${book.bname}" href="#">${book.bname}</a></p>
             <p><a href="<c:url value='/jsps/book/list.jsp'/>" name='P_zz' title='${book.author}'>${book.author}</a></p>
             <p class="publishing">
                 <span>出 版 社：</span><a href="<c:url value='/jsps/book/list.jsp'/>">${book.press}</a>
