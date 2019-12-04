@@ -1,5 +1,6 @@
 package net.imwork.zhanlong.goods.book.web.servlet;
 
+import net.imwork.zhanlong.commons.CommonUtils;
 import net.imwork.zhanlong.goods.book.domain.Book;
 import net.imwork.zhanlong.goods.book.service.BookService;
 import net.imwork.zhanlong.goods.pager.PageBean;
@@ -77,6 +78,127 @@ public class BookServlet extends BaseServlet
         pageBean.setUrl(url);
         request.setAttribute("pb",pageBean);
         return "f:/jsps/book/list.jsp";
+    }
+
+    /**
+     * 按作者查
+     * @param request
+     * @param response
+     * @return
+     * @throws ServletException
+     * @throws IOException
+     */
+    public String findByAuthor(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException
+    {
+        //1.得到pc
+        int pc = getPc(request);
+        //2.得到url
+        String url = getUrl(request);
+        //3.获取查询条件 author
+        String author = request.getParameter("author");
+        //4.使用pc和cid调用service的findByCategory方法
+        PageBean<Book> pageBean = bookService.findByAuthor(author, pc);
+        //5.给PageBean设置url，保存PageBean，转发到jsps/book/list.jsp
+        pageBean.setUrl(url);
+        request.setAttribute("pb",pageBean);
+        return "f:/jsps/book/list.jsp";
+    }
+
+    /**
+     * 按出版社查
+     * @param request
+     * @param response
+     * @return
+     * @throws ServletException
+     * @throws IOException
+     */
+    public String findByPress(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException
+    {
+        //1.得到pc
+        int pc = getPc(request);
+        //2.得到url
+        String url = getUrl(request);
+        //3.获取查询条件 press
+        String press = request.getParameter("press");
+        //4.使用pc和cid调用service的findByCategory方法
+        PageBean<Book> pageBean = bookService.findByPress(press, pc);
+        //5.给PageBean设置url，保存PageBean，转发到jsps/book/list.jsp
+        pageBean.setUrl(url);
+        request.setAttribute("pb",pageBean);
+        return "f:/jsps/book/list.jsp";
+    }
+
+    /**
+     * 按书名查询
+     * @param request
+     * @param response
+     * @return
+     * @throws ServletException
+     * @throws IOException
+     */
+    public String findByBname(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException
+    {
+        //1.得到pc
+        int pc = getPc(request);
+        //2.得到url
+        String url = getUrl(request);
+        //3.获取查询条件 bname
+        String bname = request.getParameter("bname");
+        //4.使用pc和cid调用service的findByCategory方法
+        PageBean<Book> pageBean = bookService.findByBname(bname, pc);
+        //5.给PageBean设置url，保存PageBean，转发到jsps/book/list.jsp
+        pageBean.setUrl(url);
+        request.setAttribute("pb",pageBean);
+        return "f:/jsps/book/list.jsp";
+    }
+
+    /**
+     * 多条件组合查询
+     * @param request
+     * @param response
+     * @return
+     * @throws ServletException
+     * @throws IOException
+     */
+    public String findByCombination(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException
+    {
+        //1.得到pc
+        int pc = getPc(request);
+        //2.得到url
+        String url = getUrl(request);
+        //3.获取查询条件
+        Book criteria = CommonUtils.mapToBean(request.getParameterMap(), Book.class);
+
+        //4.使用pc和cid调用service的findByCategory方法
+        PageBean<Book> pageBean = bookService.findByCombination(criteria, pc);
+        //5.给PageBean设置url，保存PageBean，转发到jsps/book/list.jsp
+        pageBean.setUrl(url);
+        request.setAttribute("pb",pageBean);
+        return "f:/jsps/book/list.jsp";
+    }
+
+    /**
+     * 按bid查询
+     * @param request
+     * @param response
+     * @return
+     * @throws ServletException
+     * @throws IOException
+     */
+    public String load(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException
+    {
+        String bid = request.getParameter("bid");
+
+        Book book = bookService.load(bid);
+
+        request.setAttribute("book",book);
+
+        return "f:/jsps/book/desc.jsp";
     }
 
 

@@ -14,6 +14,22 @@ public class BookService
     private BookDao bookDao = new BookDao();
 
     /**
+     * 加载图书
+     * @param bid
+     * @return
+     */
+    public Book load(String bid)
+    {
+        try
+        {
+            return bookDao.findByBid(bid);
+        } catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
      * 按分类查询
      * @param cid
      * @param pc

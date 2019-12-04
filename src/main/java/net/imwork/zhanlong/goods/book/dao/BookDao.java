@@ -1,17 +1,21 @@
 package net.imwork.zhanlong.goods.book.dao;
 
+import net.imwork.zhanlong.commons.CommonUtils;
 import net.imwork.zhanlong.goods.book.domain.Book;
+import net.imwork.zhanlong.goods.category.domain.Category;
 import net.imwork.zhanlong.goods.pager.Expression;
 import net.imwork.zhanlong.goods.pager.PageBean;
 import net.imwork.zhanlong.goods.pager.PageConstants;
 import net.imwork.zhanlong.jdbc.TxQueryRunner;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.MapHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 图书模块的持久层
@@ -19,6 +23,21 @@ import java.util.List;
 public class BookDao
 {
     private QueryRunner queryRunner = new TxQueryRunner();
+
+    /**
+     * 按bid查询
+     * @param bid
+     * @return
+     */
+    public Book findByBid(String bid) throws SQLException
+    {
+        String sql = "select * from t_book where bid=?";
+        Map<String, Object> map = queryRunner.query(sql, new MapHandler(), bid);
+        Book book = CommonUtils.mapToBean(map, Book.class);
+        Category category = CommonUtils.mapToBean(map, Category.class);
+        book.setCategory(category);
+        return book;
+    }
 
     /**
      * 按分类查询

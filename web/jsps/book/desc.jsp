@@ -25,9 +25,9 @@
   </head>
   
   <body>
-  <div class="divBookName">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</div>
+  <div class="divBookName">${book.bname}</div>
   <div>
-    <img align="top" src="<c:url value='/book_img/23254532-1_w.jpg'/>" class="img_image_w"/>
+    <img align="top" src="<c:url value='/${book.image_w}'/>" class="img_image_w"/>
     <div class="divBookDesc">
 	    <ul>
 	    	<li>商品编号：4A9574F03A6B40C1B2A437237C17DEEC</li>

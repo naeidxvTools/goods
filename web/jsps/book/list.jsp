@@ -46,9 +46,10 @@
                     <c:param name="method" value="findByPress"></c:param>
                     <c:param name="press" value="${book.press}"></c:param>
                 </c:url>
-                    <%--<p><a href="<c:url value='/BookServlet?method=findByAuthor&author=${book.author}'/>" name='P_zz' title='${book.author}'>${book.author}</a></p>--%>
+<%--                    <p><a href="<c:url value='/BookServlet?method=findByAuthor&author=${book.author}'/>" name='P_zz' title='${book.author}'>${book.author}</a></p>--%>
                 <p><a href="${authorUrl}" name='P_zz' title='${book.author}'>${book.author}</a></p>
                 <p class="publishing"><span>出 版 社：</span><a href="<c:url value='/BookServlet?method=findByPress&press=${book.press}'/>">${book.press}</a></p>
+<%--                <p class="publishing"><span>出 版 社：</span><a href="${pressUrl}">${book.press}</a></p>--%>
                 <p class="publishing_time"><span>出版时间：</span>${book.publishtime}</p>
             </div>
         </li>
