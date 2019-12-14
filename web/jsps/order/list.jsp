@@ -18,7 +18,7 @@
 	-->
 	<link rel="stylesheet" type="text/css" href="<c:url value='/jsps/css/order/list.css'/>" />
 	<link rel="stylesheet" type="text/css" href="<c:url value='/jsps/pager/pager.css'/>" />
-    <script type="text/javascript" src="<c:url value='/jsps/pager/pager.js'/>"></script>
+<%--    <script type="text/javascript" src="<c:url value='/jsps/pager/pager.js'/>"></script>--%>
   </head>
   
   <body>

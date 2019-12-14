@@ -54,9 +54,9 @@ img {
 }
 
 .linkNext {
-	background: url(/goods/images/icon2.png) no-repeat;
+	/*background: url(/goods/images/icon2.png) no-repeat;*/
 	display: inline-block;
-	background-position: 0 -35px;
+	background: url(../../../images/icon2.png) no-repeat 0 -35px;
 	height: 40px;
 	width: 190px;
 	margin: 0;
@@ -70,9 +70,8 @@ img {
 }
 
 .linkNext:HOVER {
-	background: url(/goods/images/icon2.png) no-repeat;
 	display: inline-block;
-	background-position: 0 -75px;
+	background: url(../../../images/icon2.png) no-repeat 0 -75px;
 	height: 40px;
 	width: 190px;
 	poorfish: expression(this.onclick = function jiesuan(){return true});

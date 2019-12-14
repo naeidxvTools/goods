@@ -174,8 +174,8 @@ function skip(url, frameName) {
 	如果父元素是menuContent，返回null。
 */
 Q6MenuBar.prototype.getCurrMenu = function(res) {
-	tagName = res.tagName;
-	name = res.getAttribute("name");
+	let tagName = res.tagName;
+	let name = res.getAttribute("name");
 	while(tagName != "DIV" || name != "menu") {
 //		alert(tagName + ", " + name);
 		res = res.parentNode;
@@ -199,16 +199,16 @@ Q6MenuBar.prototype.attr = function(ele, attrName) {
 }
 
 Q6MenuBar.prototype.showMenu = function(evt, menuBar) {
-	var e = evt ? evt : window.event;
-	var res = e.srcElement || e.target;
-	var menu = this.getCurrMenu(res);//获取当前被点击的menu
+	let e = evt ? evt : window.event;
+	let res = e.srcElement || e.target;
+	let menu = this.getCurrMenu(res);//获取当前被点击的menu
 	if(!menu) return;
 	this.openMenu(menuBar, menu);
 }
 
 // 打开或关闭menu
 Q6MenuBar.prototype.openMenu = function(menuBar, menu) {
-	var childs = menu.childNodes;//获取menuBar的所有子元素
+	let childs = menu.childNodes;//获取menuBar的所有子元素
 	for(var i = 0; i < childs.length; i++) {
 		//因为Firefor中，换行会出现空白节点，所以需要小心。
 		//获取所有content元素

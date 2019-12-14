@@ -19,7 +19,7 @@
 <link rel="stylesheet" type="text/css" href="<c:url value='/adminjsps/admin/css/book/list.css'/>">
 <script type="text/javascript" src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
 <link rel="stylesheet" type="text/css" href="<c:url value='/jsps/pager/pager.css'/>" />
-<script type="text/javascript" src="<c:url value='/jsps/pager/pager.js'/>"></script>
+<%--<script type="text/javascript" src="<c:url value='/jsps/pager/pager.js'/>"></script>--%>
 
 <script type="text/javascript" src="<c:url value='/adminjsps/admin/js/book/list.js'/>"></script>
   </head>
@@ -38,7 +38,7 @@
 		<span class="price_r">&yen;59.0</span>
 		(<span class="price_s">6.9折</span>)
 	</p>
-	<p><a id="bookname" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
+	<p><a id="bookname1" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
 	<p><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>" name='P_zz' title='Craig Walls'>Craig Walls</a></p>
 	<p class="publishing">
 		<span>出版社：</span><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>">人民邮电出版社</a>
@@ -58,7 +58,7 @@
 		<span class="price_r">&yen;59.0</span>
 		(<span class="price_s">6.9折</span>)
 	</p>
-	<p><a id="bookname" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
+	<p><a id="bookname2" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
 	<p><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>" name='P_zz' title='Craig Walls'>Craig Walls</a></p>
 	<p class="publishing">
 		<span>出版社：</span><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>">人民邮电出版社</a>
@@ -73,7 +73,7 @@
 		<span class="price_r">&yen;59.0</span>
 		(<span class="price_s">6.9折</span>)
 	</p>
-	<p><a id="bookname" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
+	<p><a id="bookname3" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
 	<p><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>" name='P_zz' title='Craig Walls'>Craig Walls</a></p>
 	<p class="publishing">
 		<span>出版社：</span><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>">人民邮电出版社</a>
@@ -88,7 +88,7 @@
 		<span class="price_r">&yen;59.0</span>
 		(<span class="price_s">6.9折</span>)
 	</p>
-	<p><a id="bookname" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
+	<p><a id="bookname4" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
 	<p><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>" name='P_zz' title='Craig Walls'>Craig Walls</a></p>
 	<p class="publishing">
 		<span>出版社：</span><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>">人民邮电出版社</a>
@@ -103,7 +103,7 @@
 		<span class="price_r">&yen;59.0</span>
 		(<span class="price_s">6.9折</span>)
 	</p>
-	<p><a id="bookname" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
+	<p><a id="bookname5" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
 	<p><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>" name='P_zz' title='Craig Walls'>Craig Walls</a></p>
 	<p class="publishing">
 		<span>出版社：</span><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>">人民邮电出版社</a>
@@ -118,7 +118,7 @@
 		<span class="price_r">&yen;59.0</span>
 		(<span class="price_s">6.9折</span>)
 	</p>
-	<p><a id="bookname" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
+	<p><a id="bookname6" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
 	<p><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>" name='P_zz' title='Craig Walls'>Craig Walls</a></p>
 	<p class="publishing">
 		<span>出版社：</span><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>">人民邮电出版社</a>
@@ -133,7 +133,7 @@
 		<span class="price_r">&yen;59.0</span>
 		(<span class="price_s">6.9折</span>)
 	</p>
-	<p><a id="bookname" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
+	<p><a id="bookname7" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
 	<p><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>" name='P_zz' title='Craig Walls'>Craig Walls</a></p>
 	<p class="publishing">
 		<span>出版社：</span><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>">人民邮电出版社</a>
@@ -148,7 +148,7 @@
 		<span class="price_r">&yen;59.0</span>
 		(<span class="price_s">6.9折</span>)
 	</p>
-	<p><a id="bookname" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
+	<p><a id="bookname8" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
 	<p><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>" name='P_zz' title='Craig Walls'>Craig Walls</a></p>
 	<p class="publishing">
 		<span>出版社：</span><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>">人民邮电出版社</a>
@@ -163,7 +163,7 @@
 		<span class="price_r">&yen;59.0</span>
 		(<span class="price_s">6.9折</span>)
 	</p>
-	<p><a id="bookname" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
+	<p><a id="bookname9" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
 	<p><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>" name='P_zz' title='Craig Walls'>Craig Walls</a></p>
 	<p class="publishing">
 		<span>出版社：</span><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>">人民邮电出版社</a>
@@ -178,7 +178,7 @@
 		<span class="price_r">&yen;59.0</span>
 		(<span class="price_s">6.9折</span>)
 	</p>
-	<p><a id="bookname" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
+	<p><a id="bookname10" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
 	<p><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>" name='P_zz' title='Craig Walls'>Craig Walls</a></p>
 	<p class="publishing">
 		<span>出版社：</span><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>">人民邮电出版社</a>
@@ -193,7 +193,7 @@
 		<span class="price_r">&yen;59.0</span>
 		(<span class="price_s">6.9折</span>)
 	</p>
-	<p><a id="bookname" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
+	<p><a id="bookname11" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
 	<p><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>" name='P_zz' title='Craig Walls'>Craig Walls</a></p>
 	<p class="publishing">
 		<span>出版社：</span><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>">人民邮电出版社</a>
@@ -208,7 +208,7 @@
 		<span class="price_r">&yen;59.0</span>
 		(<span class="price_s">6.9折</span>)
 	</p>
-	<p><a id="bookname" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
+	<p><a id="bookname12" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
 	<p><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>" name='P_zz' title='Craig Walls'>Craig Walls</a></p>
 	<p class="publishing">
 		<span>出版社：</span><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>">人民邮电出版社</a>
@@ -223,7 +223,7 @@
 		<span class="price_r">&yen;59.0</span>
 		(<span class="price_s">6.9折</span>)
 	</p>
-	<p><a id="bookname" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
+	<p><a id="bookname13" title="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）</a></p>
 	<p><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>" name='P_zz' title='Craig Walls'>Craig Walls</a></p>
 	<p class="publishing">
 		<span>出版社：</span><a href="<c:url value='/adminjsps/admin/book/list.jsp'/>">人民邮电出版社</a>

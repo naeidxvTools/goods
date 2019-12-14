@@ -6,10 +6,10 @@
 <html>
   <head>
     <title>信息板</title>
-    
+
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="expires" content="0">
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<!--
@@ -21,11 +21,11 @@
 		color: #404040;
 		font-family: SimSun;
 	}
-	
+
 	.divBody {
 		margin-left: 15%;
 	}
-	
+
 	.divTitle {
 		text-align:left;
 		width: 900px;
@@ -38,7 +38,7 @@
 		width: 900px;
 		height: 230px;
 		border: 5px solid #efeae5;
-		margin-right:20px; 
+		margin-right:20px;
 		margin-bottom:20px;
 	}
 	.spanTitle {
@@ -50,11 +50,11 @@
 a {text-decoration: none;}
 a:visited {color: #018BD3;}
 a:hover {color:#FF6600; text-decoration: underline;}
-}
+
 </style>
 
   </head>
-  
+
   <body>
   <c:choose>
   	<c:when test="${code eq 'success' }">
@@ -65,7 +65,7 @@ a:hover {color:#FF6600; text-decoration: underline;}
   		<c:set var="img" value="/images/cuohao.png"/>
   		<c:set var="title" value="失败"/>
   	</c:when>
-  	
+
   </c:choose>
 <div class="divBody">
 	<div class="divTitle">
