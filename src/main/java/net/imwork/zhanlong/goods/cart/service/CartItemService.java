@@ -12,6 +12,39 @@ public class CartItemService
     private CartItemDao cartItemDao = new CartItemDao();
 
     /**
+     * 修改购物车条目数量
+     * @param cartItemId
+     * @param quantity
+     * @return
+     */
+    public CartItem updateQuantity(String cartItemId, int quantity)
+    {
+        try
+        {
+            cartItemDao.updateQuantity(cartItemId,quantity);
+            return cartItemDao.findByCartItemId(cartItemId);
+        } catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 批量删除
+     * @param cartItemIds
+     */
+    public void batchDelete(String cartItemIds)
+    {
+        try
+        {
+            cartItemDao.batchDelete(cartItemIds);
+        } catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
      * 添加条目
      * @param cartItem
      */

@@ -21,6 +21,52 @@ public class CartItemServlet extends BaseServlet
     private CartItemService cartItemService = new CartItemService();
 
     /**
+     * 修改购物车条目数量
+     * @param request
+     * @param response
+     * @return
+     * @throws ServletException
+     * @throws IOException
+     */
+    public String updateQuantity(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException
+    {
+        String cartItemId = request.getParameter("cartItemId");
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+
+        CartItem cartItem = cartItemService.updateQuantity(cartItemId, quantity);
+        StringBuilder sb = new StringBuilder("{");
+
+        sb.append("\"quantity\"").append(":").append(cartItem.getQuantity());
+        sb.append(",");
+        sb.append("\"subtotal\"").append(":").append(cartItem.getSubtotal());
+
+        sb.append("}");
+        System.out.println(sb);
+        response.getWriter().print(sb);
+
+        return null;
+    }
+
+    /**
+     * 批量删除
+     * @param request
+     * @param response
+     * @return
+     * @throws ServletException
+     * @throws IOException
+     */
+    public String batchDelete(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException
+    {
+        String cartItemIds = request.getParameter("cartItemIds");
+
+        cartItemService.batchDelete(cartItemIds);
+
+        return myCart(request,response);
+    }
+
+    /**
      * 添加购物车条目
      * @param request
      * @param response
@@ -59,8 +105,6 @@ public class CartItemServlet extends BaseServlet
         List<CartItem> cartItemList = cartItemService.myCart(user.getUid());
 
         request.setAttribute("cartItemList", cartItemList);
-
-        System.out.println(cartItemList);
         return "f:/jsps/cart/list.jsp";
     }
 

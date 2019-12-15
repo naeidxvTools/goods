@@ -19,6 +19,55 @@ public class CartItemDao
     private QueryRunner queryRunner = new TxQueryRunner();
 
     /**
+     * 按id查询
+     * @param cartItemId
+     * @return
+     */
+    public CartItem findByCartItemId(String cartItemId) throws SQLException
+    {
+        String sql = "select * from t_cartItem c, t_book b where c.bid=b.bid and cartItemId=?";
+        Map<String, Object> map = queryRunner.query(sql, new MapHandler(), cartItemId);
+
+        return toCartItem(map);
+    }
+
+    /**
+     * 用来生成where子句
+     * @param len
+     * @return
+     */
+    private String toWhereSql(int len)
+    {
+        StringBuilder sb = new StringBuilder("cartItemId in (");
+        for (int i = 0; i < len; i++)
+        {
+            sb.append("?");
+            if (i < len - 1)
+            {
+                sb.append(",");
+            }
+        }
+        sb.append(")");
+        return sb.toString();
+    }
+
+    /**
+     *  批量删除
+     * @param cartItemIds
+     */
+    public void batchDelete(String cartItemIds) throws SQLException
+    {
+        Object[] cartItemIdArray = cartItemIds.split(",");
+
+        String whereSql = toWhereSql(cartItemIdArray.length);
+        String sql = "delete from t_cartitem where " + whereSql;
+
+        queryRunner.update(sql, cartItemIdArray);//其中cartItemIdArray必须是Object类型的数组
+
+    }
+
+
+    /**
      * 查询某个用户的某本图书在购物车中是否存在
      * @param uid
      * @param bid
