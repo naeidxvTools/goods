@@ -21,6 +21,26 @@ public class CartItemServlet extends BaseServlet
     private CartItemService cartItemService = new CartItemService();
 
     /**
+     * 加载多个CartItem
+     * @param request
+     * @param response
+     * @return
+     * @throws ServletException
+     * @throws IOException
+     */
+    public String loadCartItems(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException
+    {
+        String cartItemIds = request.getParameter("cartItemIds");
+        double total = Double.parseDouble(request.getParameter("total"));
+        List<CartItem> cartItemList = cartItemService.loadCartItems(cartItemIds);
+        request.setAttribute("cartItemList",cartItemList);
+        request.setAttribute("cartItemIds", cartItemIds);
+        request.setAttribute("total", total);
+        return "f:/jsps/cart/showitem.jsp";
+    }
+
+    /**
      * 修改购物车条目数量
      * @param request
      * @param response

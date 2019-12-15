@@ -61,43 +61,54 @@
             });
 
 
-            // 给jia、jian添加事件  ??????????????????????????????????????
+            // 给jia、jian添加事件
             $(".jian").click(function ()
             {
-                let cartItemId = $(this).attr("id").substring(0, 5);
+                let cartItemId = $(this).attr("id").substring(0, 32);
                 let quantity = Number($("#" + cartItemId + "Quantity").val());
                 if (quantity == 1)
                 {
                     if (confirm("您是否真要删除该条目？"))
                     {
-                        alert("删除成功！");
+						location = "/goods/CartItemServlet?method=batchDelete&cartItemIds=" + cartItemId;
                     }
                 } else
                 {
-                    sendUpdate(cartItemId, quantity - 1);
+                    sendUpdateQuantity(cartItemId, quantity - 1);
                 }
             });
             $(".jia").click(function ()
             {
-                let cartItemId = $(this).attr("id").substring(0, 5);
+                let cartItemId = $(this).attr("id").substring(0, 32);
                 let quantity = Number($("#" + cartItemId + "Quantity").val());
-                sendUpdate(cartItemId, quantity + 1);
+				sendUpdateQuantity(cartItemId, quantity + 1);
             });
 
-            // 异步请求，修改数量   ???????????????????????????????????
-            function sendUpdate(cartItemId, quantity)
+            // 异步请求，修改数量
+            function sendUpdateQuantity(cartItemId, quantity)
             {
-                /*
+				/*
                  1. 通过cartItemId找到输入框元素
                  2. 通过cartItemId找到小计元素
                 */
-                let input = $("#" + cartItemId + "Quantity");
-                let subtotal = $("#" + cartItemId + "Subtotal");
-                let currPrice = $("#" + cartItemId + "CurrPrice");
+				let input = $("#" + cartItemId + "Quantity");
+				let subtotal = $("#" + cartItemId + "Subtotal");
+				let currPrice = $("#" + cartItemId + "CurrPrice");
 
-                input.val(quantity);
-                subtotal.text(round(currPrice.text() * quantity, 2));
-                showTotal();
+				$.ajax({
+					async:false,
+					cache:false,
+					url:"/goods/CartItemServlet",
+					data:{method:"updateQuantity",cartItemId:cartItemId,quantity:quantity},
+					type:"POST",
+					dataType:"json",
+					success: function (res)
+					{
+						input.val(res.quantity);
+						subtotal.text(res.subtotal);
+						showTotal();
+					}
+				});
             }
         });
 
@@ -159,6 +170,22 @@
             location = "/goods/CartItemServlet?method=batchDelete&cartItemIds=" + cartItemIdArray;
         }
 
+        //结算
+        function jiesuan()
+        {
+            //1.获取所有被选中的条目的id，放到数组中
+            let cartItemIdArray = new Array();
+            $(":checkbox[name=checkboxBtn][checked=true]").each(function ()
+            {
+                cartItemIdArray.push($(this).val());//把复选框的值添加到数组中
+            });
+            //2.把数组的值toString()，然后赋值给表单的cartItemIds这个hidden
+            $("#cartItemIds").val(cartItemIdArray.toString());
+            //把总计的值，也保存到表单中
+            $("#hiddenTotal").val($("#total").text());
+            //3.提交这个表单
+            $("#jieSuanForm").submit();
+        }
 
     </script>
 </head>
@@ -233,12 +260,13 @@
             </tr>
             <tr>
                 <td colspan="7" align="right">
-                    <a href="<c:url value='/jsps/cart/showitem.jsp'/>" id="jiesuan" class="jiesuan"></a>
+                    <a href="javascript:jiesuan();" id="jiesuan" class="jiesuan"></a>
                 </td>
             </tr>
         </table>
-        <form id="form1" action="<c:url value='/jsps/cart/showitem.jsp'/>" method="post">
+        <form id="jieSuanForm" action="<c:url value='/CartItemServlet'/>" method="post">
             <input type="hidden" name="cartItemIds" id="cartItemIds"/>
+            <input type="hidden" name="total" id="hiddenTotal"/>
             <input type="hidden" name="method" value="loadCartItems"/>
         </form>
     </c:otherwise>
