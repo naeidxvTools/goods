@@ -6,6 +6,7 @@ import net.imwork.zhanlong.goods.cart.domain.CartItem;
 import net.imwork.zhanlong.goods.user.domain.User;
 import net.imwork.zhanlong.jdbc.TxQueryRunner;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.MapHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 
 import java.sql.SQLException;
@@ -18,13 +19,53 @@ public class CartItemDao
     private QueryRunner queryRunner = new TxQueryRunner();
 
     /**
+     * 查询某个用户的某本图书在购物车中是否存在
+     * @param uid
+     * @param bid
+     * @return
+     */
+    public CartItem findByUidAndBid(String uid, String bid) throws SQLException
+    {
+        String sql = "select * from t_cartitem where uid=? and bid=?";
+        Map<String, Object> map = queryRunner.query(sql, new MapHandler(), uid, bid);
+        CartItem cartItem = toCartItem(map);
+        return cartItem;
+    }
+
+    /**
+     * 修改指定条目的数量
+     * @param cartItemId
+     * @param newQuantity
+     */
+    public void updateQuantity(String cartItemId, int newQuantity) throws SQLException
+    {
+        String sql = "update t_cartitem set quantity=? where cartItemId=?";
+        queryRunner.update(sql, newQuantity, cartItemId);
+    }
+
+    /**
+     * 添加条目
+     * @param cartItem
+     */
+    public void addCartItem(CartItem cartItem) throws SQLException
+    {
+        String sql = "insert into t_cartitem (cartItemId,quantity, bid, uid)" +
+                "values (?,?,?,?)";
+        Object[] params = {cartItem.getCartItemId(), cartItem.getQuantity(),
+                cartItem.getBook().getBid(), cartItem.getUser().getUid()};
+
+        queryRunner.update(sql, params);
+
+    }
+
+    /**
      * 把一个map映射成一个CartItem
      * @param map
      * @return
      */
     private CartItem toCartItem(Map<String, Object> map)
     {
-        if(map == null) return null;
+        if(map == null || map.size() == 0) return null;
         CartItem cartItem = CommonUtils.mapToBean(map,CartItem.class);
         Book book = CommonUtils.mapToBean(map, Book.class);
         User user = CommonUtils.mapToBean(map, User.class);
