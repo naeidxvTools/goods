@@ -9,6 +9,7 @@ import net.imwork.zhanlong.goods.pager.PageBean;
 import net.imwork.zhanlong.goods.pager.PageConstants;
 import net.imwork.zhanlong.jdbc.TxQueryRunner;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
@@ -21,6 +22,71 @@ import java.util.Map;
 public class OrderDao
 {
     private QueryRunner queryRunner = new TxQueryRunner();
+
+    /**
+     * 查询订单状态
+     * @param oid
+     * @return
+     */
+    public int findStatus(String oid) throws SQLException
+    {
+        String sql = "select status from t_order where oid=?";
+        Number number = (Number) queryRunner.query(sql, new ScalarHandler(),oid);
+        return number.intValue();
+    }
+
+    /**
+     * 修改订单状态
+     * @param oid
+     * @param status
+     */
+    public void updateStatus(String oid,int status) throws SQLException
+    {
+        String sql = "update t_order set status=? where oid=?";
+        queryRunner.update(sql, status, oid);
+    }
+
+    /**
+     * 加载订单
+     * @param oid
+     * @return
+     * @throws SQLException
+     */
+    public Order load(String oid) throws SQLException
+    {
+        String sql = "select * from t_order where oid=?";
+        Order order = queryRunner.query(sql, new BeanHandler<>(Order.class), oid);
+        loadOrderItem(order); //为当前订单加载他的所有订单条目
+        return order;
+    }
+
+    /**
+     * 生成订单
+     * @param order
+     */
+    public void add(Order order) throws SQLException
+    {
+        //1.插入订单
+        String sql = "insert into t_order values (?,?,?,?,?,?)";
+        Object[] params = {order.getOid(),order.getOrdertime(),order.getTotal(),
+                order.getStatus(),order.getAddress(),order.getOwner().getUid()};
+        queryRunner.update(sql, params);
+
+        //2.循环遍历订单的所有条目，让每个条目生成一个Object[]
+        //多个条目对应Object[][]
+        //执行批处理，完成插入订单条目
+        sql = "insert into t_orderitem values (?,?,?,?,?,?,?,?)";
+        int len = order.getOrderItemList().size();
+        Object[][] objs = new Object[len][];
+        for (int i = 0; i < len; i++)
+        {
+            OrderItem item = order.getOrderItemList().get(i);
+            objs[i] = new Object[]{item.getOrderItemId(),item.getQuantity(),item.getSubtotal(),
+                    item.getBook().getBid(),item.getBook().getBname(),item.getBook().getCurrPrice(),
+                    item.getBook().getImage_b(),order.getOid()};
+        }
+        queryRunner.batch(sql, objs);
+    }
 
     /**
      * 按用户查询订单
