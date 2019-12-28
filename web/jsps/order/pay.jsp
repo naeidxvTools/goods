@@ -29,8 +29,8 @@ $(function() {
   
   <body>
 <div class="divContent">
-	<span class="spanPrice">Ö§¸¶½ð¶î£º</span><span class="price_t">&yen;203.5</span>
-	<span class="spanOid">±àºÅ£ºE3A1EB6D0543489F9729B2B5BC5DB365</span>
+	<span class="spanPrice">Ö§¸¶½ð¶î£º</span><span class="price_t">&yen;${order.total}</span>
+	<span class="spanOid">±àºÅ£º${order.oid}</span>
 </div>
 <%--<form action="<c:url value='/OrderServlet'/>" method="post" id="form1" target="_top">--%>
 <form action="#" method="post" id="form1" target="_top">

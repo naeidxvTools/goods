@@ -81,7 +81,7 @@
 			<span style="font-weight: 900; font-size: 15px;">合计金额：</span>
 			<span class="price_t">&yen;${order.total}</span><br/>
 				<c:if test="${order.status eq 1}">
-					<a href="<c:url value='/jsps/order/pay.jsp'/>" class="pay"></a><br/>
+					<a href="<c:url value='/OrderServlet?method=paymentPre&oid=${order.oid}'/>" class="pay"></a><br/>
 				</c:if>
 				<c:if test="${order.status eq 1 and btn eq 'cancel'}">
 					<a id="cancel" href="<c:url value='/OrderServlet?method=cancel&oid=${order.oid}'/>">取消订单</a><br/>
