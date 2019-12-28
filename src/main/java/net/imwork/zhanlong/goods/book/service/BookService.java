@@ -14,6 +14,22 @@ public class BookService
     private BookDao bookDao = new BookDao();
 
     /**
+     * 查询指定当前分类下的图书的个数
+     * @param cid
+     * @return
+     */
+    public int findBookCountByCategory(String cid)
+    {
+        try
+        {
+            return bookDao.findBookCountByCategory(cid);
+        } catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
      * 加载图书
      * @param bid
      * @return

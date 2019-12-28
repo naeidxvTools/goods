@@ -40,6 +40,19 @@ public class BookDao
     }
 
     /**
+     * 查询指定分类下图书的个数
+     * @param cid
+     * @return
+     * @throws SQLException
+     */
+    public int findBookCountByCategory(String cid) throws SQLException
+    {
+        String sql = "select count(*) from t_book where cid=?";
+        Number number = (Number) queryRunner.query(sql, new ScalarHandler(), cid);
+        return number == null ? 0 : number.intValue();
+    }
+
+    /**
      * 按分类查询
      * @param cid
      * @param pc
