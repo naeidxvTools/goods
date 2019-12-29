@@ -80,13 +80,18 @@ public class CategoryDao
         return parents;
     }
 
+    /**
+     * 通过父分类查询子分类
+     * @param pid
+     * @return
+     * @throws SQLException
+     */
     public List<Category> findByParent(String pid) throws SQLException
     {
         String sql = "select * from t_category where pid=? order by orderBy";
         List<Map<String, Object>> mapList = queryRunner.query(sql, new MapListHandler(), pid);
         return toCategoryList(mapList);
     }
-
 
     /**
      * 添加分类

@@ -111,4 +111,51 @@ public class OrderService
         }
     }
 
+    /**
+     * 按状态查询
+     * @param status
+     * @param pc
+     * @return
+     */
+    public PageBean<Order> findByStatus(int status, int pc)
+    {
+        try
+        {
+            JdbcUtils.beginTransaction();
+            PageBean<Order> pb = orderDao.findByStatus(status, pc);
+            JdbcUtils.commitTransaction();
+            return pb;
+        } catch (SQLException e)
+        {
+            try
+            {
+                JdbcUtils.rollbackTransaction();
+            } catch (SQLException ex) {}
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 查询所有
+     * @param pc
+     * @return
+     */
+    public PageBean<Order> findAll(int pc)
+    {
+        try
+        {
+            JdbcUtils.beginTransaction();
+            PageBean<Order> pb = orderDao.findAll(pc);
+            JdbcUtils.commitTransaction();
+            return pb;
+        } catch (SQLException e)
+        {
+            try
+            {
+                JdbcUtils.rollbackTransaction();
+            } catch (SQLException ex) {}
+            throw new RuntimeException(e);
+        }
+    }
+
 }

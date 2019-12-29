@@ -103,6 +103,33 @@ public class OrderDao
     }
 
     /**
+     * 按状态查询
+     * @param status
+     * @param pc
+     * @return
+     * @throws SQLException
+     */
+    public PageBean<Order> findByStatus(int status, int pc) throws SQLException
+    {
+        List<Expression> expressions = new ArrayList<>();
+        expressions.add(new Expression("status", "=", status + ""));
+        return findByCriteria(expressions, pc);
+    }
+
+
+    /**
+     * 查询所有
+     * @param pc
+     * @return
+     * @throws SQLException
+     */
+    public PageBean<Order> findAll(int pc) throws SQLException
+    {
+        List<Expression> expressions = new ArrayList<>();
+        return findByCriteria(expressions, pc);
+    }
+
+    /**
      * 通用的查询方法
      * @param expressions
      * @param pc

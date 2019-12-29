@@ -25,17 +25,51 @@ public class BookDao
     private QueryRunner queryRunner = new TxQueryRunner();
 
     /**
+     * 删除图书
+     * @param bid
+     */
+    public void delete(String bid) throws SQLException
+    {
+        String sql = "delete from t_book where bid=?";
+        queryRunner.update(sql,bid);
+    }
+
+    /**
+     * 修改图书
+     * @param book
+     */
+    public void edit(Book book) throws SQLException
+    {
+        String sql = "update t_book set bname=?,author=?, price=?,currPrice=?,discount=?,press=?,publishtime=?," +
+                "edition=?,pageNum=?,wordNum=?,printtime=?,booksize=?,paper=?,cid=? where bid=?";
+        Object[] params = {book.getBname(),book.getAuthor(),book.getPrice(),book.getCurrPrice(),book.getDiscount(),
+                book.getPress(),book.getPublishtime(),book.getEdition(),book.getPageNum(),book.getWordNum(),
+                book.getPrinttime(),book.getBooksize(),book.getPaper(),book.getCategory().getCid(),book.getBid()};
+        queryRunner.update(sql, params);
+    }
+
+
+    /**
      * 按bid查询
      * @param bid
      * @return
+     * @throws SQLException
      */
     public Book findByBid(String bid) throws SQLException
     {
-        String sql = "select * from t_book where bid=?";
+        String sql = "select * from t_book b, t_category c where b.cid=c.cid and b.bid = ?";
         Map<String, Object> map = queryRunner.query(sql, new MapHandler(), bid);
         Book book = CommonUtils.mapToBean(map, Book.class);
         Category category = CommonUtils.mapToBean(map, Category.class);
         book.setCategory(category);
+
+        //把pid获取出来，创建一个Category parent，把pid赋给它，然后再把parent赋给category
+        if (map.get("pid") != null)
+        {
+            Category parent = new Category();
+            parent.setCid((String) map.get("pid"));
+            category.setParent(parent);
+        }
         return book;
     }
 
@@ -168,5 +202,20 @@ public class BookDao
         pageBean.setBeanList(beanList);
         pageBean.setTr(tr);
         return pageBean;
+    }
+
+    /**
+     * 添加图书
+     * @param book
+     */
+    public void add(Book book) throws SQLException
+    {
+        String sql = "insert into t_book (bid,bname,author, price,currPrice,discount,press,publishtime,edition,pageNum,wordNum," +
+                "printtime,booksize,paper,cid,image_w,image_b) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        Object[] params = {book.getBid(),book.getBname(),book.getAuthor(),book.getPrice(),book.getCurrPrice(),book.getDiscount(),
+                book.getPress(),book.getPublishtime(),book.getEdition(),book.getPageNum(),book.getWordNum(),
+                book.getPrinttime(),book.getBooksize(),book.getPaper(),book.getCategory().getCid(),book.getImage_w(),
+                book.getImage_b()};
+        queryRunner.update(sql, params);
     }
 }
