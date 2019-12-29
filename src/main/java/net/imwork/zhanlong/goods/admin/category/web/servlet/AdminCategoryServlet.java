@@ -78,7 +78,7 @@ public class AdminCategoryServlet extends BaseServlet
     public String addChildPre(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        String pid = request.getParameter("pid"); //当前点击人父分类id
+        String pid = request.getParameter("pid"); //当前点击的父分类id
         List<Category> parents = categoryService.findParents();
         request.setAttribute("pid", pid);
         request.setAttribute("parents", parents);
