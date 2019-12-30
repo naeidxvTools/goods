@@ -112,8 +112,8 @@
 				</li>
 				<li>大图：　<input id="image_w" type="file" name="image_w"/></li>
 				<li>小图：　<input id="image_b" type="file" name="image_b"/></li>
-				<li>当前价：<input id="price" type="text" name="price" value="40.7" style="width:50px;"/></li>
-				<li>定价：　<input id="currPrice" type="text" name="currPrice" value="59.0" style="width:50px;"/>
+				<li>定价：<input id="price" type="text" name="price" value="40.7" style="width:50px;"/></li>
+				<li>当前价：　<input id="currPrice" type="text" name="currPrice" value="59.0" style="width:50px;"/>
 					折扣：<input id="discount" type="text" name="discount" value="6.9" style="width:30px;"/>折
 				</li>
 			</ul>
