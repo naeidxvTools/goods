@@ -15,11 +15,13 @@
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.github.naeidxvTools/naeidxvTools -->
         <dependency>
-            <groupId>net.imwork.zhanlong.naeidxvTools</groupId>
-            <artifactId>NaeidxvTools</artifactId>
-            <version>1.3</version>
+            <groupId>com.github.naeidxvTools</groupId>
+            <artifactId>naeidxvTools</artifactId>
+            <version>1.5</version>
         </dependency>
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
